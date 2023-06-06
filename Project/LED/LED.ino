@@ -1,8 +1,32 @@
+const int LED_r_PIN = ;  // LED燈的接腳
+const int LED_b_PIN = ; // LED燈的接腳
+const int LED_g_PIN = ;  //LED燈的接腳
 void setup()
 {
   Serial.begin(115200);
+  pinMode(LED_r_PIN, OUTPUT);
+  pinMode(LED_b_PIN, OUTPUT);
+  pinMode(LED_g_PIN, OUTPUT);
 }
 
-void loop() {
+void loop() 
+{
+ if(t-t1>=0.5&&t>=28)
+ { digitalWrite(LED_r_PIN, HIGH);
+   digitalWrite(LED_b_PIN, LOW);
+   digitalWrite(LED_g_PIN, LOW);
+ }  
+ else if(t-t1>=0.5&&t>=24&&t<=28)
+ { digitalWrite(LED_r_PIN, HIGH);
+   digitalWrite(LED_b_PIN, LOW);
+   digitalWrite(LED_g_PIN, HIGH);
+ } 
+ else if(t-t1>=0.5&&t<=24)
+ { digitalWrite(LED_r_PIN, LOW);
+   digitalWrite(LED_b_PIN, HIGH);
+   digitalWrite(LED_g_PIN, LOW);
+ } 
+
+  
 
 }

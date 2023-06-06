@@ -8,7 +8,7 @@
 #define   DAIKIN
 
 
-#define   CODE_NUMBER  50     //50*4=200 最多可以接收 200位元
+#define   CODE_NUMBER  1000     //50*4=200 最多可以接收 200位元
 
 #if defined (NEC )
   #define   D_START     4000   // 判斷為啟始位元最小持續時間，單位 us
