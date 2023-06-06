@@ -41,7 +41,8 @@
   #define   D_MIN       300    // 電壓狀態不變的最小持續時間，單位 us
   #define   D_HI        1000   // 判斷為高電位最小持續時間，單位 us
 #endif
-
+#include <IRremote.h>
+IRsend irsend; // IRRemote限定使用數位腳位3
   
 byte              startBit      = 0;      // 是否出現啟始位元
 const int         IR_rec_pin    = 4;      // IR 接收器輸出腳位
@@ -67,7 +68,29 @@ void setup( ) {
 void loop( ) {
   IRRecCode();  
   delayMicroseconds( 5 );
+  int d;
+  
+//  if( (d = Serial.read()) != -1) { // 讀取序列埠
+      unsigned long v = 0x1705000000002000A000E08FC3;
+//    switch(d){ // 根據讀取到的資料，換成代表六個按鍵的紅外線編碼
+//      case '1':
+//        v = 0x1705002000002000A000E08FC3;
+//      break;
+//      case '2':
+//        v = 0x1705000000002000A000E08FC3;
+//      break;
+//    }
+   
+    if(v != 0x0){
+      Serial.print("read ");
+      Serial.print(d);
+      Serial.print(", IR send ");
+      Serial.println(v, HEX);
+      irsend.sendNEC(v, 104); // 輸出紅外線訊號
+    }
+//  }
 }
+
 
 void IRRecCode() {
   IRstate = digitalRead( IR_rec_pin );// 讀取腳位狀態
@@ -153,36 +176,3 @@ void IRRecCode() {
   // 記錄此次狀態
   IRstate_last = IRstate;
 }//end IRRecCode
-#include <IRremote.h>
-
-IRsend irsend; // IRRemote限定使用數位腳位3
-
-void setup()
-{
-  Serial.begin(115200);
-}
-
-void loop() {
-  int d;
-  
-//  if( (d = Serial.read()) != -1) { // 讀取序列埠
-      unsigned long v = 0x1705000000002000A000E08FC3;
-//    switch(d){ // 根據讀取到的資料，換成代表六個按鍵的紅外線編碼
-//      case '1':
-//        v = 0x1705002000002000A000E08FC3;
-//      break;
-//      case '2':
-//        v = 0x1705000000002000A000E08FC3;
-//      break;
-//    }
-      //v = 
-   
-    if(v != 0x0){
-      Serial.print("read ");
-      Serial.print(d);
-      Serial.print(", IR send ");
-      Serial.println(v, HEX);
-      irsend.sendNEC(v, 104); // 輸出紅外線訊號
-    }
-//  }
-}
