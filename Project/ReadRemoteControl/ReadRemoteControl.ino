@@ -8,7 +8,7 @@
 #define   DAIKIN
 
 
-#define   CODE_NUMBER  1000     //50*4=200 最多可以接收 200位元
+#define   CODE_NUMBER  1000     //50*4=200 最多可以接收 200位元，有更改
 
 #if defined (NEC )
   #define   D_START     4000   // 判斷為啟始位元最小持續時間，單位 us
@@ -53,7 +53,7 @@ unsigned long int lTime         = 0;      // 低電位時間
 boolean           isIdle        = true;   // 是否在等待 IR 訊號模式Idle）
 int               number        = 0;      // 接收多少位元
 unsigned long int factor        = 1;      // 2進位加權
-byte              code[CODE_NUMBER]      ;         // 紅外線傳送碼
+byte              code[CODE_NUMBER];      // 紅外線傳送碼
 byte              index         =0;       // code陣列索引
 
 
@@ -62,7 +62,7 @@ void setup( ) {
   pinMode( IR_rec_pin, INPUT );        // 設定針腳 I/O 模式
   IRstate = digitalRead( IR_rec_pin ); // 取得腳位元狀態初始值
   IRstate_last = IRstate;
-  Serial.println( "紅外線接收解碼程式" );
+  //Serial.println( "紅外線接收解碼程式" );
 }
 void loop( ) {
   IRRecCode();  
@@ -78,14 +78,14 @@ void IRRecCode() {
         Serial.print(" ");
         Serial.print(micros( ) - time_last);
         Serial.println("");
-        Serial.print("紅外線16進制碼:0x");
-        for(int i=index-1;i>=0;i--){
-          Serial.print(code[i], HEX);
-        }  
-      
-        Serial.print("(");
-        Serial.print(number);
-        Serial.println( "位元)" );     
+//        Serial.print("紅外線16進制碼:0x");
+//        for(int i=index-1;i>=0;i--){
+//          Serial.print(code[i], HEX);
+//        }  
+//      
+//        Serial.print("(");
+//        Serial.print(number);
+//        Serial.println( "位元)" );     
       }  
       isIdle = true; //進入等待狀態
       startBit=0;
