@@ -33,7 +33,7 @@ DHT dht2(DHTPIN2, DHTTYPE);
 DHT dht3(DHTPIN3, DHTTYPE);
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println("DHTxx test!");
 
   dht.begin();
