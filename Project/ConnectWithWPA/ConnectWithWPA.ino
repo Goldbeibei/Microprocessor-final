@@ -15,13 +15,13 @@
 */
 #include <LWiFi.h>
 
-char ssid[] = "yourNetwork";     //  your network SSID (name)
-char pass[] = "secretPassword";  // your network password
+char ssid[] = "E605";     //  your network SSID (name)
+char pass[] = "E605E605";  // your network password
 int status = WL_IDLE_STATUS;     // the Wifi radio's status
 
 void setup() {
 	//Initialize serial and wait for port to open:
-	Serial.begin(9600);
+	Serial.begin(115200);
 	while (!Serial) {
 		; // wait for serial port to connect. Needed for native USB port only
 	}
