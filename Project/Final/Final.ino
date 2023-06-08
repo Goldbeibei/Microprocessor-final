@@ -17,6 +17,7 @@ const int LED_b_PIN = 11; // LED燈的接腳
 const int LED_g_PIN = 12;  //LED燈的接腳
 const int buttonPin = 8;     // the number of the pushbutton pin
 int buttonState = 0;         // variable for reading the pushbutton status
+int ACState =0;           //冷氣狀態
 // Uncomment whatever type you're using!
 // #define DHTTYPE DHT11   // DHT 11
 #define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
@@ -77,38 +78,46 @@ void loop() {
       testRaw("RAW1", sendbuf1, sizeof(sendbuf1)/sizeof(int));
       Serial.print("irsend \n");
       delay(1000);
+      ACState =0;
     }
     else
     {
-      if(t>=30)
-      { 
-        digitalWrite(LED_r_PIN, HIGH);
-        digitalWrite(LED_b_PIN, LOW);
-        digitalWrite(LED_g_PIN, LOW);
-        Serial.print("LED red \n");
-      }  
-      else if(t<=30&&t>=28)
-      {
-        digitalWrite(LED_r_PIN, HIGH);
-        digitalWrite(LED_b_PIN, LOW);
-        digitalWrite(LED_g_PIN, HIGH);
-        Serial.print("LED yellow \n");
-      }
-      else if(t<=28&&t1>=25)
-      {
-        digitalWrite(LED_r_PIN, LOW);
-        digitalWrite(LED_b_PIN, LOW);
-        digitalWrite(LED_g_PIN, HIGH); 
-        Serial.print("LED green \n");              
-      }
-      else
-      {
-        digitalWrite(LED_r_PIN, LOW);
-        digitalWrite(LED_b_PIN, HIGH);
-        digitalWrite(LED_g_PIN, LOW);
-        Serial.print("LED blue \n");
-      }
+      ACState =1;
+      Serial.print("AC on \n");
     }
+  }
+
+
+  if(ACState)
+  {
+    if(t>=30)
+        { 
+          digitalWrite(LED_r_PIN, HIGH);
+          digitalWrite(LED_b_PIN, LOW);
+          digitalWrite(LED_g_PIN, LOW);
+          Serial.print("LED red \n");
+        }  
+        else if(t<=30&&t>=28)
+        {
+          digitalWrite(LED_r_PIN, HIGH);
+          digitalWrite(LED_b_PIN, LOW);
+          digitalWrite(LED_g_PIN, HIGH);
+          Serial.print("LED yellow \n");
+        }
+        else if(t<=28&&t1>=25)
+        {
+          digitalWrite(LED_r_PIN, LOW);
+          digitalWrite(LED_b_PIN, LOW);
+          digitalWrite(LED_g_PIN, HIGH); 
+          Serial.print("LED green \n");              
+        }
+        else
+        {
+          digitalWrite(LED_r_PIN, LOW);
+          digitalWrite(LED_b_PIN, HIGH);
+          digitalWrite(LED_g_PIN, LOW);
+          Serial.print("LED blue \n");
+        }
   }
   //  Serial.print("Humidity: ");
   //  Serial.print(h);
