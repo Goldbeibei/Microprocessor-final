@@ -86,7 +86,22 @@ void loop() {
       Serial.print("AC on \n");
     }
   }
-
+  else if(t<20)
+  {
+    if(t1<25)
+    {
+      testRaw("RAW2", sendbuf2, sizeof(sendbuf2)/sizeof(int));
+      testRaw("RAW2", sendbuf2, sizeof(sendbuf2)/sizeof(int));
+      Serial.print("irsend \n");
+      delay(1000);
+      ACState =1;
+    }
+    else
+    {
+      ACState =0;
+      Serial.print("AC off \n");
+    }
+  }
 
   if(ACState)
   {
