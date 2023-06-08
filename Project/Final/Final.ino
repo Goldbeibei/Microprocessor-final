@@ -16,8 +16,8 @@ const int LED_r_PIN = 13;  // LED燈的接腳
 const int LED_b_PIN = 11; // LED燈的接腳
 const int LED_g_PIN = 12;  //LED燈的接腳
 const int buttonPin = 8;     // the number of the pushbutton pin
-int buttonState = 0;         // variable for reading the pushbutton status
-int ACState =0;           //冷氣狀態
+bool buttonState = 0;         // variable for reading the pushbutton status
+bool ACState =0;           //冷氣狀態
 // Uncomment whatever type you're using!
 // #define DHTTYPE DHT11   // DHT 11
 #define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
@@ -69,7 +69,14 @@ void loop() {
   // Compute heat index in Celsius (isFahreheit = false)
   float hic = dht.computeHeatIndex(t, h, false);
   buttonState = digitalRead(buttonPin);
-
+  Serial.print("buttonState:");
+  Serial.println(buttonState);
+  if(buttonState)
+  {
+    ACState =!ACState;
+    Serial.print("change state \nACState:");
+    Serial.println(ACState);
+  }
   if(t>=30)
   {
     if(t1>=25)
