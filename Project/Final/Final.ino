@@ -72,18 +72,32 @@ void loop() {
   buttonState = digitalRead(buttonPin);
   Serial.print("buttonState:");
   Serial.println(buttonState);
-
-  //加入buttonState連續按下超過5秒跳出while irsend的迴圈
   
   if(buttonState)
   {
+    int buttonTimes=0;
     while(ACState && t1<25)
     {
       //強制關閉
       testRaw("RAW2", sendbuf2, sizeof(sendbuf2)/sizeof(int));
       testRaw("RAW2", sendbuf2, sizeof(sendbuf2)/sizeof(int));
       Serial.print("irsend off \n");
-      delay(1000);      
+      delay(1000);
+      
+      //buttonState連續按下超過5秒跳出while irsend的迴圈 
+      if(buttonState)
+      {
+         buttonTimes++;   
+      }
+      else
+      {
+        buttonTimes=0;
+      }
+      if(buttonTimes>5)
+      {
+        Serial.print("Stop irsend off \n");
+        break;
+      }
     }
     while(!ACState && t1>=25)
     {
@@ -92,6 +106,21 @@ void loop() {
       testRaw("RAW1", sendbuf1, sizeof(sendbuf1)/sizeof(int));
       Serial.print("irsend on \n");
       delay(1000);
+      
+      //buttonState連續按下超過5秒跳出while irsend的迴圈 
+      if(buttonState)
+      {
+         buttonTimes++;   
+      }
+      else
+      {
+        buttonTimes=0;
+      }
+      if(buttonTimes>5)
+      {
+        Serial.print("Stop irsend on \n");
+        break;
+      }
     }
     ACState =!ACState;
     Serial.print("change state \nACState:");
