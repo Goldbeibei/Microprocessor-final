@@ -29,6 +29,7 @@ DHT dht1(DHTPIN1, DHTTYPE);
 void setup() {
   Serial.begin(115200);
   Serial.println("DHTxx test!");
+  Serial.print("----------------------------------------------------------------------------------------------------- %\n");
   pinMode(buttonPin, INPUT);
   pinMode(LED_r_PIN, OUTPUT);
   pinMode(LED_b_PIN, OUTPUT);
@@ -71,8 +72,27 @@ void loop() {
   buttonState = digitalRead(buttonPin);
   Serial.print("buttonState:");
   Serial.println(buttonState);
+
+  //加入buttonState連續按下超過5秒跳出while irsend的迴圈
+  
   if(buttonState)
   {
+    while(ACState && t1<25)
+    {
+      //強制關閉
+      testRaw("RAW2", sendbuf2, sizeof(sendbuf2)/sizeof(int));
+      testRaw("RAW2", sendbuf2, sizeof(sendbuf2)/sizeof(int));
+      Serial.print("irsend off \n");
+      delay(1000);      
+    }
+    while(!ACState && t1>=25)
+    {
+      //強制開啟
+      testRaw("RAW1", sendbuf1, sizeof(sendbuf1)/sizeof(int));
+      testRaw("RAW1", sendbuf1, sizeof(sendbuf1)/sizeof(int));
+      Serial.print("irsend on \n");
+      delay(1000);
+    }
     ACState =!ACState;
     Serial.print("change state \nACState:");
     Serial.println(ACState);
@@ -83,7 +103,7 @@ void loop() {
     {
       testRaw("RAW1", sendbuf1, sizeof(sendbuf1)/sizeof(int));
       testRaw("RAW1", sendbuf1, sizeof(sendbuf1)/sizeof(int));
-      Serial.print("irsend \n");
+      Serial.print("irsend on \n");
       delay(1000);
       ACState =0;
     }
@@ -99,7 +119,7 @@ void loop() {
     {
       testRaw("RAW2", sendbuf2, sizeof(sendbuf2)/sizeof(int));
       testRaw("RAW2", sendbuf2, sizeof(sendbuf2)/sizeof(int));
-      Serial.print("irsend \n");
+      Serial.print("irsend off \n");
       delay(1000);
       ACState =1;
     }
