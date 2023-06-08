@@ -110,6 +110,8 @@ void loop() {
     }
   }
 
+  Serial.print("ACState:");
+  Serial.println(ACState);
   if(ACState)
   {
     if(t>=30)
@@ -140,6 +142,13 @@ void loop() {
           digitalWrite(LED_g_PIN, LOW);
           Serial.print("LED blue \n");
         }
+  }
+  else
+  {
+          digitalWrite(LED_r_PIN, LOW);
+          digitalWrite(LED_b_PIN, LOW);
+          digitalWrite(LED_g_PIN, LOW);
+          Serial.print("LED off \n");    
   }
   //  Serial.print("Humidity: ");
   //  Serial.print(h);
