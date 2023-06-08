@@ -18,6 +18,7 @@
  - 完成TECO遙控器關機IRsend.ino：李杰儒、陳彥杰、鄒閔丞(v1.0.7)
  - 整合(LED、IRsend、DHT22tester、Button)Final.ino：李杰儒、陳彥杰(v1.0.8)
  - buttonState連續按下超過5秒跳出while irsend的迴圈 Final.ino：李杰儒(v1.0.9)
+ - 新增連接E605 WIFI功能ConnectWithWPA.ino：李杰儒(v1.0.10)
 
 # 預期目標
  根據環境溫度，當環境溫度高於設定溫度後，自動發射紅外線開啟冷氣，並經由安裝在冷氣出風口的溫度感測器判定冷氣是否開啟，並使用LED顯示冷氣開啟狀態  
