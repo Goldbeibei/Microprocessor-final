@@ -78,6 +78,7 @@ void loop() {
     int buttonTimes=0;
     while(ACState && t1<25)
     {
+      buttonState = digitalRead(buttonPin);
       //強制關閉
       testRaw("RAW2", sendbuf2, sizeof(sendbuf2)/sizeof(int));
       testRaw("RAW2", sendbuf2, sizeof(sendbuf2)/sizeof(int));
@@ -101,6 +102,7 @@ void loop() {
     }
     while(!ACState && t1>=25)
     {
+      buttonState = digitalRead(buttonPin);
       //強制開啟
       testRaw("RAW1", sendbuf1, sizeof(sendbuf1)/sizeof(int));
       testRaw("RAW1", sendbuf1, sizeof(sendbuf1)/sizeof(int));
