@@ -12,7 +12,7 @@
  - 使其可在其他開發版上使用，例如arduino或ESP32等等ReadRemoteControl.ino(Rx)
  - 外接一個三色LED：馬群勝(v1.0.4)
  - 協助測試紅外線訊號：李杰儒、陳彥杰、鄒閔丞、陳柏睿、馬群勝
- - 製作紅外線快速整理試算表：李杰儒李杰儒、陳彥杰、鄒閔丞
+ - 製作紅外線快速整理[試算表](https://docs.google.com/spreadsheets/d/1zR44exFmDHyra-3OzhaO2X6h2LUSSYcr3xJzH7o1jj8/edit#gid=1426875601)：李杰儒、陳彥杰、鄒閔丞
  - 拷貝遙控器開關紅外線訊號ReadRemoteControl.ino：李杰儒、陳彥杰、鄒閔丞(v1.0.5)
  - 完成TECO遙控器開機IRsend.ino：李杰儒、陳彥杰、鄒閔丞(v1.0.6)
  - 完成TECO遙控器關機IRsend.ino：李杰儒、陳彥杰、鄒閔丞(v1.0.7)
