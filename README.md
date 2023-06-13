@@ -20,7 +20,7 @@
  - buttonState連續按下超過5秒跳出while irsend的迴圈 Final.ino：李杰儒(v1.0.9)
  - 新增連接E605 WIFI功能ConnectWithWPA.ino：李杰儒(v1.0.10)
  - Debug buttonState連續按下超過5秒跳出while irsend的迴圈 Final.ino：李杰儒(v1.0.11)
- - 加入PPT與word：鄒閔丞、劉子睿(v1.0.12)
+ - 加入PPT與word：鄒閔丞、劉子睿(1.0.12)
 
 # 預期目標
  根據環境溫度，當環境溫度高於設定溫度後，自動發射紅外線開啟冷氣，並經由安裝在冷氣出風口的溫度感測器判定冷氣是否開啟，並使用LED顯示冷氣開啟狀態  
