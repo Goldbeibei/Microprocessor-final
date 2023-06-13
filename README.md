@@ -2,6 +2,7 @@
  微處理機實驗期末專題   
 
 # 主要貢獻
+ - Tag說明：tag有v代表重要程式更新，沒有表示文件更新
  - 給予主題方向：黃坤成總監
  - 構思主題想法與實行步驟與進度監控：李杰儒組長(README.md與notion報告書)
  - 實作將四個溫度計程式顯示完成DHT22tester.ino：陳彥杰(v1.0.1)
@@ -21,6 +22,7 @@
  - 新增連接E605 WIFI功能ConnectWithWPA.ino：李杰儒(v1.0.10)
  - Debug buttonState連續按下超過5秒跳出while irsend的迴圈 Final.ino：李杰儒(v1.0.11)
  - 加入PPT與word：鄒閔丞、劉子睿(1.0.12)
+ - 加入LWiFi的範例：李杰儒(1.0.13)
 
 # 預期目標
  根據環境溫度，當環境溫度高於設定溫度後，自動發射紅外線開啟冷氣，並經由安裝在冷氣出風口的溫度感測器判定冷氣是否開啟，並使用LED顯示冷氣開啟狀態  
@@ -46,7 +48,9 @@
  - 紅外線接收器HX1838B *1
 
 # 開發環境
- Arduino 1.8.19(理論上1.8.x都可)
+ Arduino 1.8.19(理論上1.8.x都可)  
+ 將Lwifi-libraries底下的所有檔案放入本機IDE的examples裡面  
+ 將libraries底下的所有檔案放入本機IDE的libraries裡面  
  
 # linkit7697腳位
 - 2：DHT22(環境溫度)
