@@ -254,8 +254,9 @@ void loop() {
 //  Serial.print("Temperature3: ");
 //  Serial.print(t3);
 //  Serial.print(" %\n");
-    // if you get a connection, report back via serial:
+  //如果溫度為nan則不上傳到thingspeak  
   if(!(isnan(t)||isnan(t1))) {
+    // if you get a connection, report back via serial:
     if (client.connect(server, 80)) {
         Serial.println("connected to server (GET)");
 
