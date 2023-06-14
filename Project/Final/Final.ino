@@ -1,12 +1,42 @@
 #include "DHT.h"
+#include <LWiFi.h>
 #include <IRremote.h>
+
+char ssid[] = "E605";      //  your network SSID (name)
+char pass[] = "E605E605";  // your network password (use for WPA, or use as key for WEP)
+int keyIndex = 0;               // your network key Index number (needed only for WEP)
+
+#define HOST    "api.thingspeak.com" // ThingSpeak IP Address: 184.106.153.149
+#define PORT    80
+
+String GET = "GET /update?key=OLG84ZDYFJ7OSLMQ"; //輸入自己API的key
+int status = WL_IDLE_STATUS;
+char server[] = "api.thingspeak.com"; 
+WiFiClient client;
 
 IRsend irsend;
 
 void testRaw(char *label, unsigned int *rawbuf, int rawlen) {
     irsend.sendRaw(rawbuf, rawlen, 38 /* kHz */);
     delay(200);
-}   
+} 
+
+void printWifiStatus() {
+    // print the SSID of the network you're attached to:
+    Serial.print("SSID: ");
+    Serial.println(WiFi.SSID());
+
+    // print your WiFi shield's IP address:
+    IPAddress ip = WiFi.localIP();
+    Serial.print("IP Address: ");
+    Serial.println(ip);
+
+    // print the received signal strength:
+    long rssi = WiFi.RSSI();
+    Serial.print("signal strength (RSSI):");
+    Serial.print(rssi);
+    Serial.println(" dBm");
+}
 
 #define DHTPIN 2     // what digital pin we're connected to
 #define DHTPIN1 5
@@ -35,6 +65,17 @@ void setup() {
   pinMode(LED_b_PIN, OUTPUT);
   pinMode(LED_g_PIN, OUTPUT);
   dht.begin();
+
+  while (status != WL_CONNECTED) {
+    Serial.print("Attempting to connect to SSID: ");
+    Serial.println(ssid);
+    // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
+    status = WiFi.begin(ssid, pass);
+  }
+  Serial.println("Connected to wifi");
+  printWifiStatus();
+  Serial.println("\nStarting connection to server...");
+
 }
  // right on
 unsigned int sendbuf1[] = { 
@@ -216,5 +257,41 @@ void loop() {
 //  Serial.print("Temperature3: ");
 //  Serial.print(t3);
 //  Serial.print(" %\n");
+
+// if you get a connection, report back via serial:
+    if (client.connect(server, 80)) {
+        Serial.println("connected to server (GET)");
+
+        String getStr = GET + "&field1=" + String((int)t) +
+                              "&field2=" + String((int)t1) +
+                              " HTTP/1.1\r\n";
+        client.print( getStr );
+        client.print( "Host: api.thingspeak.com\n" );
+        client.print( "Connection: close\r\n\r\n" );
+
+
+       // if there are incoming bytes available
+       // from the server, read them and print them:
+          while (client.available()) {
+              char c = client.read();
+              Serial.write(c);
+          }
+    }
+    if (!client.connected()) {
+        Serial.println();
+        Serial.println("disconnecting from server.");
+        client.stop();
+        
+        String getStr = GET + "&field1=" + String((int)t) +
+                              "&field2=" + String((int)t1) +
+                              " HTTP/1.1\r\n";
+        // 嘗試重新連線
+        client.print( getStr );
+        client.print( "Host: api.thingspeak.com\n" );
+        client.print( "Connection: close\r\n\r\n" );
+    }
+
+
+
   Serial.print("----------------------------------------------------------------------------------------------------- %\n");
 }
