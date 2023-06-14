@@ -6,7 +6,7 @@ char ssid[] = "E608";      //  your network SSID (name)
 char pass[] = "E608E608";  // your network password (use for WPA, or use as key for WEP)
 int keyIndex = 0;               // your network key Index number (needed only for WEP)
 
-String GET = "GET /update?key=OLG84ZDYFJ7OSLMQ"; //輸入自己API的key  OLG84ZDYFJ7OSLMQ
+String GET = "GET /update?key=PCQ09YPBVPCE6QYQ"; //輸入自己API的key  OLG84ZDYFJ7OSLMQ
 int status = WL_IDLE_STATUS;
 char server[] = "api.thingspeak.com"; // ThingSpeak IP Address: 184.106.153.149  Host: api.thingspeak.com
 WiFiClient client;
@@ -114,7 +114,7 @@ void loop() {
   if(buttonState)
   {
     int buttonTimes=0;
-    while(ACState && t1<25)
+    while(ACState && t1<20)
     {
       buttonState = digitalRead(buttonPin);
       //強制關閉
@@ -184,7 +184,7 @@ void loop() {
   }
   else if(t<20)
   {
-    if(t1<25)
+    if(t1<20)
     {
       testRaw("RAW2", sendbuf2, sizeof(sendbuf2)/sizeof(int));
       testRaw("RAW2", sendbuf2, sizeof(sendbuf2)/sizeof(int));
