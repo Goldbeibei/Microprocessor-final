@@ -160,10 +160,6 @@ void loop() {
             break;
          }
       }
-      
-      ACState =!ACState;
-      Serial.print("change state \nACState:");
-      Serial.println(ACState);
       //迴圈內加入溫度更新
        t = dht.readTemperature();
        t1 = dht1.readTemperature();
@@ -201,14 +197,14 @@ void loop() {
             break;
          }
       }
-      
-      ACState =!ACState;
-      Serial.print("change state \nACState:");
-      Serial.println(ACState);
       //迴圈內加入溫度更新
       t = dht.readTemperature();
       t1 = dht1.readTemperature();
     }
+      //更新狀態
+      ACState =!ACState;
+      Serial.print("change state \nACState:");
+      Serial.println(ACState);
   }
   if(t>=30)
   {
