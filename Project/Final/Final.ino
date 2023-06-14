@@ -6,12 +6,9 @@ char ssid[] = "E605";      //  your network SSID (name)
 char pass[] = "E605E605";  // your network password (use for WPA, or use as key for WEP)
 int keyIndex = 0;               // your network key Index number (needed only for WEP)
 
-#define HOST    "api.thingspeak.com" // ThingSpeak IP Address: 184.106.153.149
-#define PORT    80
-
-String GET = "GET /update?key=OLG84ZDYFJ7OSLMQ"; //輸入自己API的key
+String GET = "GET /update?key=OLG84ZDYFJ7OSLMQ"; //輸入自己API的key  OLG84ZDYFJ7OSLMQ
 int status = WL_IDLE_STATUS;
-char server[] = "api.thingspeak.com"; 
+char server[] = "api.thingspeak.com"; // ThingSpeak IP Address: 184.106.153.149  Host: api.thingspeak.com
 WiFiClient client;
 
 IRsend irsend;
@@ -257,8 +254,8 @@ void loop() {
 //  Serial.print("Temperature3: ");
 //  Serial.print(t3);
 //  Serial.print(" %\n");
-
-// if you get a connection, report back via serial:
+    // if you get a connection, report back via serial:
+  if(!(isnan(t)||isnan(t1))) {
     if (client.connect(server, 80)) {
         Serial.println("connected to server (GET)");
 
@@ -278,6 +275,12 @@ void loop() {
           }
     }
     if (!client.connected()) {
+        //連線失敗白燈長亮一秒並嘗試連線
+          digitalWrite(LED_r_PIN, HIGH);
+          digitalWrite(LED_b_PIN, HIGH);
+          digitalWrite(LED_g_PIN, HIGH);
+          Serial.print("LED white \n");  
+        
         Serial.println();
         Serial.println("disconnecting from server.");
         client.stop();
@@ -289,9 +292,15 @@ void loop() {
         client.print( getStr );
         client.print( "Host: api.thingspeak.com\n" );
         client.print( "Connection: close\r\n\r\n" );
+
+        //白燈長亮關閉
+        delay(1000);
+          digitalWrite(LED_r_PIN, LOW);
+          digitalWrite(LED_b_PIN, LOW);
+          digitalWrite(LED_g_PIN, LOW);
+          Serial.print("LED off \n"); 
     }
-
-
+  }
 
   Serial.print("----------------------------------------------------------------------------------------------------- %\n");
 }
