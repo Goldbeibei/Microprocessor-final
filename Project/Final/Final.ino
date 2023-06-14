@@ -2,8 +2,8 @@
 #include <LWiFi.h>
 #include <IRremote.h>
 
-char ssid[] = "E605";      //  your network SSID (name)
-char pass[] = "E605E605";  // your network password (use for WPA, or use as key for WEP)
+char ssid[] = "E608";      //  your network SSID (name)
+char pass[] = "E608E608";  // your network password (use for WPA, or use as key for WEP)
 int keyIndex = 0;               // your network key Index number (needed only for WEP)
 
 String GET = "GET /update?key=OLG84ZDYFJ7OSLMQ"; //輸入自己API的key  OLG84ZDYFJ7OSLMQ
