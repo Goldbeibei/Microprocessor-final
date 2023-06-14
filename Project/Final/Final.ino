@@ -55,7 +55,7 @@ DHT dht1(DHTPIN1, DHTTYPE);
 
 void setup() {
   Serial.begin(115200);
-  Serial.println("DHTxx test!");
+  Serial.println("Welcome Microprocessor-final");
   Serial.print("----------------------------------------------------------------------------------------------------- %\n");
   pinMode(buttonPin, INPUT);
   pinMode(LED_r_PIN, OUTPUT);
