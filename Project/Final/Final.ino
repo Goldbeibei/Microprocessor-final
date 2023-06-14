@@ -109,8 +109,6 @@ void loop() {
   // Compute heat index in Celsius (isFahreheit = false)
   float hic = dht.computeHeatIndex(t, h, false);
   buttonState = digitalRead(buttonPin);
-  Serial.print("buttonState:");
-  Serial.println(buttonState);
 
   //加入console debug功能
   if(Serial.available()) {
@@ -122,6 +120,9 @@ void loop() {
       buttonState = 1;
     }
   }
+
+  Serial.print("buttonState:");
+  Serial.println(buttonState);
   
   if(buttonState)
   {
