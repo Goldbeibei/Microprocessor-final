@@ -150,6 +150,17 @@ void loop() {
         Serial.print("Stop irsend off \n");
         break;
       }
+
+      //加入console強制跳出while irsend的迴圈
+      if(Serial.available()) {
+        //讀取傳入的字串
+         String str = Serial.readStringUntil('\n');
+         if(str == "break"){
+            Serial.print("Stop irsend on \n");
+            break;
+         }
+      }
+      
       ACState =!ACState;
       Serial.print("change state \nACState:");
       Serial.println(ACState);
@@ -180,13 +191,24 @@ void loop() {
         Serial.print("Stop irsend on \n");
         break;
       }
+
+      //加入console強制跳出while irsend的迴圈
+      if(Serial.available()) {
+        //讀取傳入的字串
+         String str = Serial.readStringUntil('\n');
+         if(str == "break"){
+            Serial.print("Stop irsend on \n");
+            break;
+         }
+      }
+      
+      ACState =!ACState;
+      Serial.print("change state \nACState:");
+      Serial.println(ACState);
+      //迴圈內加入溫度更新
+      t = dht.readTemperature();
+      t1 = dht1.readTemperature();
     }
-    ACState =!ACState;
-    Serial.print("change state \nACState:");
-    Serial.println(ACState);
-    //迴圈內加入溫度更新
-     t = dht.readTemperature();
-     t1 = dht1.readTemperature();
   }
   if(t>=30)
   {
