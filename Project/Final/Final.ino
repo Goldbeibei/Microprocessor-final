@@ -137,6 +137,12 @@ void loop() {
         Serial.print("Stop irsend off \n");
         break;
       }
+      ACState =!ACState;
+      Serial.print("change state \nACState:");
+      Serial.println(ACState);
+      //迴圈內加入溫度更新
+       t = dht.readTemperature();
+       t1 = dht1.readTemperature();
     }
     while(!ACState && t1>=25)
     {
@@ -165,6 +171,9 @@ void loop() {
     ACState =!ACState;
     Serial.print("change state \nACState:");
     Serial.println(ACState);
+    //迴圈內加入溫度更新
+     t = dht.readTemperature();
+     t1 = dht1.readTemperature();
   }
   if(t>=30)
   {
