@@ -1,7 +1,27 @@
+/*
+  Web client
+
+  This sketch connects to a website (http://download.labs.mediatek.com)
+  using LinkIt 7697
+
+  This example is written for a network using WPA encryption. For
+  WEP or WPA, change the Wifi.begin() call accordingly.
+
+  Circuit:
+  * LinkIt 7697
+
+  created 13 July 2010
+  by dlf (Metodo2 srl)
+  modified 31 May 2012
+  by Tom Igoe
+  modified Jan 2017
+  by MediaTek Labs
+*/
+
 #include <LWiFi.h>
 
-char ssid[] = "E605";      //  your network SSID (name)
-char pass[] = "E605E605";  // your network password (use for WPA, or use as key for WEP)
+char ssid[] = "yourNetworkSSID";      //  your network SSID (name)
+char pass[] = "yourNetworkPassword";  // your network password (use for WPA, or use as key for WEP)
 int keyIndex = 0;               // your network key Index number (needed only for WEP)
 
 int status = WL_IDLE_STATUS;
@@ -17,7 +37,7 @@ WiFiClient client;
 
 void setup() {
     //Initialize serial and wait for port to open:
-    Serial.begin(115200);
+    Serial.begin(9600);
     while (!Serial) {
         ; // wait for serial port to connect. Needed for native USB port only
     }
@@ -37,8 +57,8 @@ void setup() {
     if (client.connect(server, 80)) {
         Serial.println("connected to server (GET)");
         // Make a HTTP request:
-        client.println("GET /channels/2186841/feeds.json?api_key=VGSC9S3ZB20C4FYC&results=2 HTTP/1.0");
-        client.println("Host: api.thingspeak.com");
+        client.println("GET /linkit_7697_ascii.txt HTTP/1.0");
+        client.println("Host: download.labs.mediatek.com");
         client.println("Accept: */*");
         client.println("Connection: close");
         client.println();
