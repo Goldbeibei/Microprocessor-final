@@ -83,8 +83,9 @@ unsigned int sendbuf2[]  = {
 
 
 void loop() {
+  //目前延遲為大概2秒執行一次迴圈
   // Wait a few seconds between measurements.
-  delay(2000);
+  delay(1500);
 
   // Reading temperature or humidity takes about 250 milliseconds!
   // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
@@ -110,6 +111,17 @@ void loop() {
   buttonState = digitalRead(buttonPin);
   Serial.print("buttonState:");
   Serial.println(buttonState);
+
+  //加入console debug功能
+  if(Serial.available()) {
+    //讀取傳入的字串
+    String str = Serial.readStringUntil('\n');
+
+    //模擬按下按鈕
+    if(str == "button"){
+      buttonState = 1;
+    }
+  }
   
   if(buttonState)
   {
