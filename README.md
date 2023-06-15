@@ -74,6 +74,15 @@
  將Lwifi-libraries底下的所有檔案放入本機IDE的examples裡面  
  將libraries底下的所有檔案放入本機IDE的libraries裡面  
  
+# 實作照片
+ ![20230615_105534](https://github.com/Goldbeibei/Microprocessor-final/assets/121147600/ee3b1c59-b70a-44ea-bd07-2629694d5dac)
+ ![20230615_105527](https://github.com/Goldbeibei/Microprocessor-final/assets/121147600/f2aafbd2-5312-41bc-a2d5-1e5bd75a0c3d)
+ ![20230615_105537](https://github.com/Goldbeibei/Microprocessor-final/assets/121147600/ac2ffa7a-8b17-4add-8f98-86e1ca8a2a57)
+ ![20230615_105544](https://github.com/Goldbeibei/Microprocessor-final/assets/121147600/42840901-5ed8-42af-96f1-90b26611a5ca)
+ ![20230615_105544](https://github.com/Goldbeibei/Microprocessor-final/assets/121147600/846f754b-d179-4d70-a803-7e2c1d85e18c)
+ ![20230615_105545](https://github.com/Goldbeibei/Microprocessor-final/assets/121147600/0f347ee4-476e-4a10-8b1f-c67eae466281)
+
+ 
 # linkit7697腳位
 - 2：DHT22(環境溫度)
 - 5：DHT22(TECO小台)
