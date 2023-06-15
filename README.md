@@ -90,3 +90,4 @@
 
 # 類似功能市面產品
 [switch box hub mini](https://switchbot.tw/hubmini/) 約$1200
+![switch box hub mini](https://switchbot.tw/_nuxt/img/product-d.0f62765.png)
