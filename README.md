@@ -1,10 +1,10 @@
+!!重要!!此程式未授權他人使用，請勿用於其他目的，如需授權請Issues請求或直接fork!!  
+
 # Microprocessor-final
  微處理機實驗期末專題 
 
 # 說明
 目前報告已於20230615早上結束，未來更新將會放緩，歡迎大家一同更新  
-!!此程式未授權他人使用，請勿用於其他目的，如需授權請Issues請求或直接fork!!
-
 
 # 完成程式碼
  Final.ino：整合DHT22tester.ino、Button.ino、IRsend.ino、LED.ino、MQTT.ino
