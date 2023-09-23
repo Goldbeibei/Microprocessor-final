@@ -98,5 +98,7 @@
 - 4：接收紅外線
 
 # 類似功能市面產品
-[switch box hub mini](https://switchbot.tw/hubmini/) 約$1200
+[switch box hub mini](https://switchbot.tw/hubmini/) 約$1200  
+我們的成本linkit7697*1($425)+DHT22*1($150)+紅外線發射器1341-K090*1($60)+紅外線接收器HX1838B*1($28)=$663  
+
 ![switch box hub mini](https://switchbot.tw/_nuxt/img/product-d.0f62765.png)
